@@ -1,4 +1,4 @@
-package com.jia.tread;
+package com.jia.thread;
 
 import org.junit.Test;
 
