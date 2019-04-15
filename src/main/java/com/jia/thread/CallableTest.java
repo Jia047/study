@@ -33,8 +33,9 @@ public class CallableTest {
 
     @Test
     public void callableTest() throws ExecutionException, InterruptedException {
-        ArrayList<Future<Integer>> list = new ArrayList<>(10);
-        ExecutorService service = Executors.newFixedThreadPool(10);
+        int n = 5;
+        ArrayList<Future<Integer>> list = new ArrayList<>(n);
+        ExecutorService service = Executors.newFixedThreadPool(n);
 
         for(int i = 0; i < 10; i++){
             int rand = (int)(Math.random() * 100);
