@@ -55,5 +55,9 @@ public class ShowProperties {
         System.out.println("path_separator:" + properties.getProperty("path.separator"));
         // 行分隔符，Linux下是 “\n"
         System.out.println("line_separator:" + properties.getProperty("line.separator"));
+
+        // 也可以自己设置一些属性
+        properties.setProperty("myProperty", "java");
+        System.out.println("myProperty:" + properties.getProperty("myProperty"));
     }
 }
