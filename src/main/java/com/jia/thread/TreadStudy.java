@@ -47,11 +47,9 @@ public class TreadStudy {
     @Test
     public void third() throws ExecutionException, InterruptedException {
         // 这里的Callable接口需要指向的是一个实现该接口的实现类，这里采用匿名内部实现类
-        Callable<Object> callable = new Callable<Object>() {
-            public Object call() throws Exception {
-                System.out.println("我是在Callable中实现的call()");
-                return "call";
-            }
+        Callable<Object> callable = () -> {
+            System.out.println("我是在Callable中实现的call()");
+            return "call";
         };
         FutureTask<Object> futureTask = new FutureTask<Object>(callable);
         Thread thread = new Thread(futureTask);

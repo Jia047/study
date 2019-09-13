@@ -43,7 +43,7 @@ public class Traverse {
         Integer key;
         while(keySet.hasNext()){
             key = keySet.next();
-            System.out.println("key = " + key + ", value = " + map.get(key));
+            System.out.println("key = " + key + ", name = " + map.get(key));
         }
 
         // entrySet
@@ -51,7 +51,7 @@ public class Traverse {
         Map.Entry<Integer, String> e;
         while(entry.hasNext()){
             e = entry.next();
-            System.out.println("key = " + e.getKey() + "， value = " + e.getValue());
+            System.out.println("key = " + e.getKey() + "， name = " + e.getValue());
         }
     }
 }
