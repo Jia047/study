@@ -24,11 +24,16 @@ public class StackTest {
 
     @Test
     public void testCollection(){
+        int r;
         List<Integer> list = new ArrayList<>();
 
+        System.out.print("sequence: small ");
         for (int i = 0; i < 10; i++){
-            list.add(RandomUtils.nextInt(0, 31));
+            r = RandomUtils.nextInt(0, 31);
+            System.out.print(r + ", ");
+            list.add(r);
         }
+        System.out.println(" big");
 
         Stack<Integer> stack = new Stack<>(list);
 
