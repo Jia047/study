@@ -85,12 +85,15 @@ class CloneUtil{
      */
     @SuppressWarnings("unchecked")
     public static <T> T clone(T obj) throws IOException, ClassNotFoundException {
+        // 字节数组，将对象（即输入数据）的非静态方法、非静态字段写入此字节数组
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(bout);
-
+        // 将对象序列化后写入一个字节流中
         oos.writeObject(obj);
 
+        // 将字节数组转换为输入流
         ByteArrayInputStream bis = new ByteArrayInputStream(bout.toByteArray());
+        // 获取到字节流中的字节数组并反序列化为对象
         ObjectInputStream ois = new ObjectInputStream(bis);
 
         return (T)ois.readObject();
