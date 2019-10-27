@@ -3,6 +3,7 @@ package com.jia.reflect;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 /**
  * Created by jia on 2019/10/22 19:45
@@ -114,5 +115,59 @@ public class FinalFieldChange {
             jack
          */
     }
+
+    /**
+     * class Dog {
+     *     private static final Integer age = 10;
+     *
+     *     Dog() {
+     *     }
+     *
+     *     public void print() {
+     *         System.out.println("age -> " + age);
+     *     }
+     * }
+     * 这一段展示 static final 也能通过反射改变属性值的。只不过程复杂一些
+     * 需要先获取 Modifier 类的实例（它的作用是返回一个类或者其成员的访问修饰符的int 类型常量）
+     * 然后更改字段的修饰符，改为非 final
+     *
+     */
+    @Test
+    public void testStaticFinal() throws NoSuchFieldException, IllegalAccessException {
+        Dog d = new Dog();
+
+        d.print();
+
+        Field af = d.getClass().getDeclaredField("age");
+
+        af.setAccessible(true);
+        // 这一步会报错
+        // java.lang.IllegalAccessException:
+        // Can not set static final java.lang.Integer field com.jia.reflect.Dog.age
+        // to java.lang.Integer
+//        af.set(d, 20);
+
+        // 这样不会报错
+        Field modifiersField = Field.class.getDeclaredField("modifiers");
+        modifiersField.setAccessible(true);
+        modifiersField.setInt(af, af.getModifiers() & ~Modifier.FINAL);
+        af.set(d, 20);
+
+        d.print();
+        System.out.println("d.age -> " + af.get(d));
+
+        modifiersField.setInt(af, af.getModifiers() & ~Modifier.FINAL);
+
+        af.set(d, 50);
+
+    }
 }
- 
+
+class Dog{
+    private static final Integer age = 10;
+
+    public void print(){
+        System.out.println("age -> " + age);
+    }
+
+}
