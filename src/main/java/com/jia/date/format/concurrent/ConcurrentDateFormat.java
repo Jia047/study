@@ -1,4 +1,4 @@
-package com.jia.date.format;
+package com.jia.date.format.concurrent;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
