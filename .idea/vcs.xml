@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/charging-cloud" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/study" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/yxp-mng" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/yxp_server" vcs="Git" />
   </component>
 </project>
